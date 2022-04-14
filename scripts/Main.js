@@ -53,6 +53,16 @@ function getScrollPercent()
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
 }
 
+let mouseVector = new THREE.Vector3();
+
+const mouse = { x : 0, y : 0};
+
+window.addEventListener('mousemove', (e) =>
+{
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+
 /**
  * Sizes
  */
@@ -68,7 +78,7 @@ window.addEventListener('resize', () =>
     sizes.height = window.innerHeight;
 
     //Update manager
-    
+    sceneManager.updateSize(sizes);
 
     // Update renderer
     renderer.setSize(sizes.width, sizes.height);
@@ -103,6 +113,11 @@ const tick = () =>
 
     // Render
     renderer.render(scene, sceneManager.camera);
+
+    // Animate camera
+    sceneManager.camera.rotation.y = THREE.MathUtils.lerp(sceneManager.camera.rotation.y, (mouse.x * Math.PI) / 100, 0.1);
+    sceneManager.camera.rotation.x = THREE.MathUtils.lerp(sceneManager.camera.rotation.x, (mouse.y * Math.PI) / 100, 0.1);
+
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick);
