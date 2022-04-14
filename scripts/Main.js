@@ -1,18 +1,5 @@
 import { SceneManager } from './SceneManager.js';
 
-// Compute age
-function getAge(dateString) {
-    var today = new Date();
-    var birthDate = new Date(dateString);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-}
-document.getElementById('age').textContent = getAge('1999/12/17')
-
 /**
  * Base
  */
@@ -65,8 +52,6 @@ function getScrollPercent()
         sh = 'scrollHeight';
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
 }
-
-let mouseVector = new THREE.Vector3();
 
 const mouse = { x : 0, y : 0};
 
@@ -131,6 +116,8 @@ const tick = () =>
     sceneManager.camera.rotation.y = THREE.MathUtils.lerp(sceneManager.camera.rotation.y, (mouse.x * Math.PI) / 100, 0.1);
     sceneManager.camera.rotation.x = THREE.MathUtils.lerp(sceneManager.camera.rotation.x, (mouse.y * Math.PI) / 100, 0.1);
 
+    if (sceneManager.sceneTick)
+        sceneManager.sceneTick();
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick);

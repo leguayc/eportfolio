@@ -7,6 +7,7 @@ export class SceneManager
         this.sizes = sizes;
         this.loader = new THREE.GLTFLoader(manager);
         this.index = -1;
+        this.sceneTick = null;
     }
 
     changeScene(index)
@@ -24,7 +25,7 @@ export class SceneManager
                     this.createSceneWorks();
                     break;
                 case 2 :
-                    this.createSceneWelcome();
+                    this.createSceneContact();
                     break;
                 default :
                     this.createSceneWelcome();
@@ -37,22 +38,31 @@ export class SceneManager
     createSceneWelcome()
     {
         this.scene = new THREE.Scene();
-
-        // Materials
-        const material = new THREE.MeshToonMaterial({ color: '#ffeded' })
-
-        // Meshes
-        const mesh1 = new THREE.Mesh(
-            new THREE.TorusGeometry(1, 0.4, 16, 60),
-            material
-        );
-
-        mesh1.position.x = 2;
-
-        this.scene.add(mesh1);
-        
         this.createLight();
         this.createCamera();
+
+        // Use a function to use it in callback
+        let updateSceneTick = (obj) => {
+            this.sceneTick = () => {
+                obj.rotation.y += 0.005;
+            };
+        };
+
+        let scene = this.scene; // To be able to access this.scene in callback
+        this.loader.load('../models/earth.glb', function (gltf) {
+            gltf.scene.scale.x *= 0.1;
+            gltf.scene.scale.y *= 0.1;
+            gltf.scene.scale.z *= 0.1;
+
+            gltf.scene.position.set(5, -4, -20);
+            gltf.scene.rotation.set(-0.7, 0, 0);
+
+            scene.add(gltf.scene);
+
+            updateSceneTick(gltf.scene);
+        }, undefined, function (error) {
+            console.error(error);
+        });
     }
 
     createSceneWorks()
@@ -68,11 +78,46 @@ export class SceneManager
             gltf.scene.scale.y *= 1;
             gltf.scene.scale.z *= 1;
 
-            gltf.scene.position.set(-20, -6.5, 25);
-            gltf.scene.rotation.set(0, 1, 0)
+            gltf.scene.position.set(-20, -10.5, 25);
+            gltf.scene.rotation.set(0.2, 1, 0)
 
             scene.add(gltf.scene);
-            console.log(scene);
+        }, undefined, function (error) {
+            console.error(error);
+        });
+    }
+
+    createSceneContact()
+    {
+        this.scene = new THREE.Scene();
+        const light = this.createLight();
+        light.position.x = -1;
+        this.createCamera();
+
+        // Use a function to use it in callback
+        let updateSceneTick = (obj) => {
+            let speed = 0.001;
+            this.sceneTick = () => {
+                if (obj.rotation.x < 0.3 || obj.rotation.x > 0.7) {
+                    speed = -speed;
+                }
+
+                obj.rotation.x += speed;
+            };
+        };
+
+        let scene = this.scene; // To be able to access this.scene in callback
+        this.loader.load('../models/envelopes.glb', function (gltf) {
+            gltf.scene.scale.x *= 1.3;
+            gltf.scene.scale.y *= 1.3;
+            gltf.scene.scale.z *= 1.3;
+
+            gltf.scene.position.set(1, 0, 0);
+            gltf.scene.rotation.set(0.3, 1, 0.8);
+
+            scene.add(gltf.scene);
+
+            updateSceneTick(gltf.scene);
         }, undefined, function (error) {
             console.error(error);
         });
@@ -83,6 +128,8 @@ export class SceneManager
         const directionalLight = new THREE.DirectionalLight('#ffffff', 1);
         directionalLight.position.set(1, 1, 2);
         this.scene.add(directionalLight);
+
+        return directionalLight;
     }
 
     createCamera()
@@ -90,6 +137,8 @@ export class SceneManager
         this.camera = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100);
         this.camera.position.set( 0, 0, 6 );
         this.scene.add(this.camera);
+
+        return this.camera;
     }
 
     removeScene()
@@ -103,6 +152,7 @@ export class SceneManager
 
             this.camera = null;
             this.scene = null;
+            this.sceneTick = null;
         }
     }
 
