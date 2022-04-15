@@ -71,20 +71,33 @@ export class SceneManager
     createSceneWorks()
     {
         this.scene = new THREE.Scene();
-        this.createLight();
+        const light = this.createLight();
+        light.intensity = 1.4;
         this.createCamera();
-        this.camera.rotation.set(-0.15, -0.1, 0);
+
+        // Use a function to use it in callback
+        let updateSceneTick = (obj) => {
+            let speed = 0.001;
+            this.sceneTick = () => {
+                if (obj.rotation.y < 0.3 || obj.rotation.y > 0.5) {
+                    speed = -speed;
+                }
+
+                obj.rotation.y += speed;
+            };
+        };
 
         let scene = this.scene; // To be able to access this.scene in callback
-        this.loader.load('../models/fantasyinn.gltf', function (gltf) {
-            gltf.scene.scale.x *= 1;
-            gltf.scene.scale.y *= 1;
-            gltf.scene.scale.z *= 1;
+        this.loader.load('../models/laptop.glb', function (gltf) {
+            gltf.scene.scale.x *= 0.1;
+            gltf.scene.scale.y *= 0.1;
+            gltf.scene.scale.z *= 0.1;
 
-            gltf.scene.position.set(-20, -10.5, 25);
-            gltf.scene.rotation.set(0.2, 1, 0)
+            gltf.scene.position.set(-6, -2, -20);
+            gltf.scene.rotation.set(0.3, 0.3, 0)
 
             scene.add(gltf.scene);
+            updateSceneTick(gltf.scene);
         }, undefined, function (error) {
             console.error(error);
         });
