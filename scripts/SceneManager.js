@@ -38,8 +38,9 @@ export class SceneManager
     createSceneWelcome()
     {
         this.scene = new THREE.Scene();
-        this.createLight();
+        const light = this.createLight();
         this.createCamera();
+        light.intensity = 3;
 
         // Use a function to use it in callback
         let updateSceneTick = (obj) => {
@@ -50,12 +51,14 @@ export class SceneManager
 
         let scene = this.scene; // To be able to access this.scene in callback
         this.loader.load('../models/earth.glb', function (gltf) {
-            gltf.scene.scale.x *= 0.1;
-            gltf.scene.scale.y *= 0.1;
-            gltf.scene.scale.z *= 0.1;
+            gltf.scene.scale.x *= 0.14;
+            gltf.scene.scale.y *= 0.14;
+            gltf.scene.scale.z *= 0.14;
 
-            gltf.scene.position.set(5, -4, -20);
+            gltf.scene.position.set(7, -5, -20);
             gltf.scene.rotation.set(-0.7, 0, 0);
+
+            gltf.scene.castShadow = true;
 
             scene.add(gltf.scene);
 

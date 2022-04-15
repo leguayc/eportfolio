@@ -37,10 +37,13 @@ window.addEventListener('scroll', () =>
 
     if(getScrollPercent() < 33) {
         scene = sceneManager.changeScene(0);
+        document.getElementById('starswrapper').style.display = 'block';
     } else if (getScrollPercent() < 66) {
         scene = sceneManager.changeScene(1);
+        document.getElementById('starswrapper').style.display = 'none';
     } else {
         scene = sceneManager.changeScene(2);
+        document.getElementById('starswrapper').style.display = 'none';
     }
 });
 
