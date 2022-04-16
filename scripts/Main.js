@@ -38,20 +38,69 @@ window.addEventListener('scroll', () =>
     scene = chooseScene();
 });
 
+/**
+ * Choose the correct scene for the current scroll Percent
+ * @returns {THREE.Scene}
+ */
 function chooseScene()
 {
     if(getScrollPercent() < 33) {
         document.getElementById('starswrapper').style.display = 'block';
+        document.getElementById('aboutme').style.display = 'flex';
+        document.getElementById('portfolio').style.display = 'none';
+        document.getElementById('contact').style.display = 'none';
         return sceneManager.changeScene(0);
     } else if (getScrollPercent() < 66) {
         document.getElementById('starswrapper').style.display = 'none';
+        document.getElementById('aboutme').style.display = 'none';
+        document.getElementById('portfolio').style.display = 'flex';
+        document.getElementById('contact').style.display = 'none';
         return sceneManager.changeScene(1);
     } else {
         document.getElementById('starswrapper').style.display = 'none';
+        document.getElementById('aboutme').style.display = 'none';
+        document.getElementById('portfolio').style.display = 'none';
+        document.getElementById('contact').style.display = 'flex';
         return sceneManager.changeScene(2);
     }
 }
 
+// Add click event to scroll down to next scenes
+let buttonsToScrollDown = document.getElementsByClassName('scrolldown');
+for (let i = 0; i < buttonsToScrollDown.length; i++) {
+    buttonsToScrollDown[i].addEventListener('click', () => {
+        scrollToScene(sceneManager.index+1);
+    });
+}
+
+/**
+ * Scroll to the scene at the given index
+ * @param {Number} index Index of the scene
+ */
+function scrollToScene(index) {
+    let percent = (34 * index);
+    let scrollTarget = getScrollHeightWithPercent(percent);
+    window.scrollTo(0, scrollTarget);
+}
+
+/**
+ * Get scrollY with the given percent
+ * @param {Number} percent Percent of the page
+ * @returns {Number}
+ */
+function getScrollHeightWithPercent(percent) {
+    var h = document.documentElement, 
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+
+    return percent / 100 * ((h[sh]||b[sh]) - h.clientHeight);
+}
+
+/**
+ * Get current scroll percent (where you are on the page)
+ * @returns {Number}
+ */
 function getScrollPercent()
 {
     var h = document.documentElement, 
@@ -61,8 +110,8 @@ function getScrollPercent()
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
 }
 
+// Used to know where the mouse is
 const mouse = { x : 0, y : 0};
-
 window.addEventListener('mousemove', (e) =>
 {
     mouse.x = (e.clientX / window.innerWidth) * 2 - 1;

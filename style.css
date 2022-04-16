@@ -2,12 +2,14 @@
 {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
   overflow: -moz-scrollbars-none;
+  height: 300vh;
 }
 
 body::-webkit-scrollbar { 
@@ -49,13 +51,23 @@ html
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   font-family: 'Cabin', sans-serif;
   color: #ffeded;
-  width: 40%;
   margin-left: 10%;
   margin-right: auto;
   will-change: transform;
+  gap: 0.5rem;
+}
+
+.section .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
   gap: 1rem;
 }
 
@@ -81,7 +93,8 @@ section:nth-child(even)
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  width: fit-content;
 }
 
 .scrolldown i {
@@ -151,3 +164,4 @@ section:nth-child(even)
     transform: translateY(-2000px);
   }
 }
+

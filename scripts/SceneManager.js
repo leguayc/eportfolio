@@ -10,11 +10,16 @@ export class SceneManager
         this.sceneTick = null;
     }
 
+    /**
+     * Change scene to the scene at the given index
+     * @param {Number} index 
+     * @returns {THREE.Scene}
+     */
     changeScene(index)
     {
         if (this.index != index) {
             this.index = index;
-            this.removeScene();
+            this.destroyScene();
             
             switch(index)
             {
@@ -35,6 +40,9 @@ export class SceneManager
         return this.scene;
     }
 
+    /**
+     * Create scene for the welcome section (about me)
+     */
     createSceneWelcome()
     {
         this.scene = new THREE.Scene();
@@ -68,6 +76,9 @@ export class SceneManager
         });
     }
 
+    /**
+     * Create scene for the portfolio section (my works)
+     */
     createSceneWorks()
     {
         this.scene = new THREE.Scene();
@@ -103,6 +114,9 @@ export class SceneManager
         });
     }
 
+    /**
+     * Create scene for the contact section
+     */
     createSceneContact()
     {
         this.scene = new THREE.Scene();
@@ -139,6 +153,10 @@ export class SceneManager
         });
     }
 
+    /**
+     * Creates generic light
+     * @returns {THREE.DirectionalLight}
+     */
     createLight()
     {
         const directionalLight = new THREE.DirectionalLight('#ffffff', 1);
@@ -148,6 +166,10 @@ export class SceneManager
         return directionalLight;
     }
 
+    /**
+     * Creates generic Camera
+     * @returns {THREE.PerspectiveCamera}
+     */
     createCamera()
     {
         this.camera = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100);
@@ -157,7 +179,10 @@ export class SceneManager
         return this.camera;
     }
 
-    removeScene()
+    /**
+     * Unloads current scene
+     */
+    destroyScene()
     {
         if(this.scene != null)
         {
@@ -172,6 +197,10 @@ export class SceneManager
         }
     }
 
+    /**
+     * Updates sizes
+     * @param {{width: Number, height: Number}} sizes 
+     */
     updateSize(sizes)
     {
         this.sizes = sizes;
