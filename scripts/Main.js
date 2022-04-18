@@ -45,22 +45,10 @@ window.addEventListener('scroll', () =>
 function chooseScene()
 {
     if(getScrollPercent() < 33) {
-        document.getElementById('starswrapper').style.display = 'block';
-        document.getElementById('aboutme').style.display = 'flex';
-        document.getElementById('portfolio').style.display = 'none';
-        document.getElementById('contact').style.display = 'none';
         return sceneManager.changeScene(0);
     } else if (getScrollPercent() < 66) {
-        document.getElementById('starswrapper').style.display = 'none';
-        document.getElementById('aboutme').style.display = 'none';
-        document.getElementById('portfolio').style.display = 'flex';
-        document.getElementById('contact').style.display = 'none';
         return sceneManager.changeScene(1);
     } else {
-        document.getElementById('starswrapper').style.display = 'none';
-        document.getElementById('aboutme').style.display = 'none';
-        document.getElementById('portfolio').style.display = 'none';
-        document.getElementById('contact').style.display = 'flex';
         return sceneManager.changeScene(2);
     }
 }
