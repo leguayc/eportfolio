@@ -153,7 +153,8 @@ var scene = chooseScene();
  */
  const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
-    alpha: true
+    alpha: true,
+    antialias: true
 });
 renderer.setClearAlpha(0);
 renderer.setSize(sizes.width, sizes.height);
@@ -172,8 +173,8 @@ const tick = () =>
     renderer.render(scene, sceneManager.camera);
 
     // Animate camera
-    sceneManager.camera.rotation.y = THREE.MathUtils.lerp(sceneManager.camera.rotation.y, (mouse.x * Math.PI) / 100, 0.1);
-    sceneManager.camera.rotation.x = THREE.MathUtils.lerp(sceneManager.camera.rotation.x, (mouse.y * Math.PI) / 100, 0.1);
+    sceneManager.camera.rotation.y = THREE.MathUtils.lerp(sceneManager.camera.rotation.y, (mouse.x * Math.PI) / 450, 0.05);
+    sceneManager.camera.rotation.x = THREE.MathUtils.lerp(sceneManager.camera.rotation.x, (mouse.y * Math.PI) / 450, 0.05);
 
     if (sceneManager.sceneTick)
         sceneManager.sceneTick();

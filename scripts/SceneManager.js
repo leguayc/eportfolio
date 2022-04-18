@@ -8,6 +8,8 @@ export class SceneManager
         this.loader = new THREE.GLTFLoader(manager);
         this.index = -1;
         this.sceneTick = null;
+        this.cssRenderer = new THREE.CSS3DRenderer();
+        this.cssRenderer.setSize( this.sizes.width, this.sizes.height );
     }
 
     /**
@@ -52,13 +54,32 @@ export class SceneManager
 
         // Use a function to use it in callback
         let updateSceneTick = (obj) => {
+            let speed = 0.001;
             this.sceneTick = () => {
                 obj.rotation.y += 0.005;
+
+                if (objectCSS.rotation.y > -0.3 || objectCSS.rotation.y < -0.5) {
+                    speed = -speed;
+                }
+
+                objectCSS.rotation.y += speed;
+
+                this.cssRenderer.render( this.scene, this.camera );
             };
         };
 
+        const element = document.createElement( 'img' );
+		element.src = 'avatar.png';
+
+        const objectCSS = new THREE.CSS3DObject( element );
+        objectCSS.position.set(1.5, 0, 0);
+        objectCSS.rotation.set(0, -0.3, 0);
+        objectCSS.scale.set(0.005, 0.005, 0.005);
+        this.scene.add(objectCSS);
+		document.getElementById( 'container' ).appendChild( this.cssRenderer.domElement );
+
         let scene = this.scene; // To be able to access this.scene in callback
-        this.loader.load('../models/earth.glb', function (gltf) {
+        this.loader.load('models/earth.glb', function (gltf) {
             gltf.scene.scale.x *= 0.14;
             gltf.scene.scale.y *= 0.14;
             gltf.scene.scale.z *= 0.14;
@@ -68,7 +89,7 @@ export class SceneManager
 
             gltf.scene.castShadow = true;
 
-            scene.add(gltf.scene);
+            //scene.add(gltf.scene);
 
             updateSceneTick(gltf.scene);
         }, undefined, function (error) {
@@ -94,9 +115,20 @@ export class SceneManager
                     speed = -speed;
                 }
 
-                obj.rotation.y += speed;
+                //obj.rotation.y += speed;
+                this.cssRenderer.render( this.scene, this.camera );
             };
         };
+
+        const element = document.createElement( 'img' );
+		element.src = '../banner-test.webp';
+
+        const objectCSS = new THREE.CSS3DObject( element );
+        objectCSS.position.set(-6.52, 2.5, -20);
+        objectCSS.rotation.set(0, 0.3, 0.09)
+        objectCSS.scale.set(0.0048, 0.006, 1);
+        this.scene.add(objectCSS);
+		document.getElementById( 'container' ).appendChild( this.cssRenderer.domElement );
 
         let scene = this.scene; // To be able to access this.scene in callback
         this.loader.load('../models/laptop.glb', function (gltf) {
@@ -194,6 +226,15 @@ export class SceneManager
             this.camera = null;
             this.scene = null;
             this.sceneTick = null;
+
+            let child;
+            do {
+                // cssRenderer.domElement.firstElementChild (ore lastElementChild) contains all the CSS3DObjet
+                child = this.cssRenderer.domElement.firstElementChild.lastElementChild;
+                if (!child)
+                    break;
+                this.cssRenderer.domElement.firstElementChild.removeChild(child);
+            } while (child);
         }
     }
 
@@ -204,6 +245,7 @@ export class SceneManager
     updateSize(sizes)
     {
         this.sizes = sizes;
+        this.cssRenderer.setSize( this.sizes.width, this.sizes.height );
         this.camera.aspect = sizes.width / sizes.height;
         this.camera.updateProjectionMatrix();
     }

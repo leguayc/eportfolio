@@ -15,6 +15,7 @@
         <div id='stars3'></div>
     </div>
     <canvas class="webgl"></canvas>
+    <div id="container"></div>
     <section id="aboutme" class="section">
         <h3>Hello World, my name is</h3>
         <h1>Corentin Leguay.</h1>
@@ -33,10 +34,19 @@
     </section>
     <section id="contact" class="section">
         <h2>Contact me</h2>
+        <div class="content">
+            <p>Do you have a question or want to work together ?</p>
+            <p>
+                <a class="btn" href="mailto:corentin.leguay@gmail.com"><i class="fa-solid fa-envelope"></i> Send Email</a>
+                <button class="btn" onclick="window.open('CV_CorentinLeguay.pdf')"><i class="fa-solid fa-download"></i> Download CV</button>
+                <a class="btn" href="https://www.linkedin.com/in/corentin-leguay/"><i class="fa-brands fa-linkedin"></i></i> Linkedin</a>
+            </p>
+        </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
     <script type="module" src="./scripts/Main.js"></script>
 </body>
 </html>
