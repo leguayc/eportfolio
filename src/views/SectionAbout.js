@@ -1,8 +1,8 @@
 export default function SectionAbout(props) {
     return (
         <section id="aboutme" className="section">
-            <h3>Hi, my name is</h3>
-            <h1>Corentin Leguay.</h1>
+            <h3>Hi, my name is Corentin Leguay,</h3>
+            <h1>I'm a full-stack developer.</h1>
             <div className="content">
                 <p>
                     New technologies enthusiast, I always wished to become a part of its world. I started this learning journey by myself, developping little games and setting up servers to play with others.
