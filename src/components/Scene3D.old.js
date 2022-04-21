@@ -85,7 +85,9 @@ export default function Scene3D() {
                 <directionalLight position={[1, 1, 1]} intensity={1.5} castShadow />
                 <Camera />
                 <Suspense fallback={null}>
-                    <GLTFModel url="./models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={0.6} position={[0, -8.05, 0]} />
+                    <TransparentImage3D image="./avatar.png" width="1.7" height="1.7" isAnimated={true} rotation={[0.1, -0.2, 0]} position={[1.2, 0.7, 0]} />
+                    <GLTFModel url="./models/laptop.glb" isAnimated={true} scale={0.17} rotation={[0, 0.3, 0]} position={[-1.2, -2.8, 0]} />
+                    <GLTFModel url="./models/envelopes.glb" isAnimated={true} rotation={[0, 0.9, 1]} position={[1.2, -5.3, 0]} />
                 </Suspense>
             </Canvas>
             <Loader />

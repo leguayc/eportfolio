@@ -4,13 +4,21 @@ export default function SectionContact(props) {
     return (
         <section id="contact" className="section">
             <h2>Contact me</h2>
-            <div className="content">
-                <p>Do you have a question or do you want to work together ? Come say hi !</p>
-                <p>
-                    <a className="btn" href="mailto:corentin.leguay@gmail.com"><i className="fa-solid fa-envelope"></i> Send Email</a>
-                    <a className="btn" href={CV} target='_blank' rel='noopener noreferrer'><i className="fa-solid fa-download"></i> Download CV</a>
-                    <a className="btn" href="https://www.linkedin.com/in/corentin-leguay/"><i className="fa-brands fa-linkedin"></i> Linkedin</a>
-                </p>
+            <div className="canvasfree"></div>
+            <div className='content-wrapper'>
+                <div className="content">
+                    <p>Do you have a question or do you want to work together ? Send me an email, or contact me on Linkedin.</p>
+                    <div className="linkList">
+                        <a className="link" href="mailto:corentin.leguay@gmail.com"><i className="fa-solid fa-envelope"></i> Send me an email</a>
+                        <a className="link" href="https://www.linkedin.com/in/corentin-leguay/"><i className="fa-brands fa-linkedin"></i> Linkedin</a>
+                    </div>
+                </div>
+                <div className="content">
+                    <p>If you want to look at my resume, you can also download it here.</p>
+                    <div className="linkList">
+                        <a className="link" href={CV} target='_blank' rel='noopener noreferrer'><i className="fa-solid fa-download"></i> Download my resume</a>
+                    </div>
+                </div>
             </div>
         </section>
     );
