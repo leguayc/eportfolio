@@ -43,10 +43,11 @@ img {
     height: 100vh;
     font-family: 'Cabin', sans-serif;
     color: #ffeded;
-    margin: 0 10%;
+    margin: 0 auto;
     gap: 2rem;
     scroll-snap-align: start;
     pointer-events: none;
+    width: 80%;
 }
 
 .section * {
@@ -62,6 +63,7 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .section .content-wrapper {
@@ -89,6 +91,7 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    width: 100%;
 }
 
 .scrolldown {
@@ -130,4 +133,46 @@ a.icon {
 
 .txtc {
     text-align: center;
+}
+
+.hobbies {
+    margin-top: 1.5rem;
+}
+
+.hobby {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.hobby img {
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+.hobby .title {
+    font-weight: 600;
+}
+
+@media (min-width: 800px) {
+    .section {
+        width: 60%;
+        padding-top: 10%;
+    }
+
+    .section h2 {
+        margin-bottom: 3rem;
+    }
+
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .section {
+        width: 40%;
+        padding-top: 5%;
+    }
 }

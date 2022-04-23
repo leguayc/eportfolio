@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react';
-import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import { useGLTF, MeshWobbleMaterial, Loader } from '@react-three/drei';
+import React, { Suspense } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useGLTF, Loader } from '@react-three/drei';
 import * as THREE from "three";
 import useMousePosition from '../hooks/useMousePosition';
 import useScrollPosition from '../hooks/useScrollPosition';
@@ -22,41 +22,6 @@ function GLTFModel({url, isAnimated, ...props}) {
     });
 
     return <primitive object={scene} {...props} />;
-}
-
-function TransparentImage3D({image, width, height, isAnimated, ...props}) {
-    const texture = useLoader(THREE.TextureLoader, image);
-    const mesh = useRef();
-
-    useFrame((state) => {
-        const t = state.clock.getElapsedTime();
-        
-        if (isAnimated) {
-            let rotationOffset = props.rotation ?? [0, 0, 0];
-            let positionOffset = props.position ?? [0, 0, 0];
-            mesh.current.rotation.y = THREE.MathUtils.lerp(mesh.current.rotation.y, Math.sin(t / 4) / 15 + rotationOffset[1], 0.1);
-            mesh.current.position.y = THREE.MathUtils.lerp(mesh.current.position.y, (-5 + Math.sin(t)) / 10 + positionOffset[1], 0.1);
-        }
-    });
-
-    return (
-        <mesh ref={mesh} {... props}>
-            <planeBufferGeometry args={[width, height]} />
-            <meshPhongMaterial  map={texture} toneMapped={false} transparent />
-        </mesh>
-    );
-}
-
-function WobblyImage3D({image, width, height, speed, factor, ...props}) {
-    const texture = useLoader(THREE.TextureLoader, image);
-    const mesh = useRef();
-
-    return (
-        <mesh ref={mesh} {... props}>
-            <planeBufferGeometry args={[width, height]} />
-            <MeshWobbleMaterial factor={factor} speed={speed} map={texture} toneMapped={false} />
-        </mesh>
-    );
 }
 
 function Camera() {
@@ -85,7 +50,8 @@ export default function Scene3D() {
                 <directionalLight position={[1, 1, 1]} intensity={1.5} castShadow />
                 <Camera />
                 <Suspense fallback={null}>
-                    <GLTFModel url="./models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={0.6} position={[0, -8.05, 0]} />
+                    <GLTFModel url="./assets/models/laptop.glb" isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[0, -5.4, 0]} />
+                    <GLTFModel url="./assets/models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={0.6} position={[0, -8.05, 0]} />
                 </Suspense>
             </Canvas>
             <Loader />
