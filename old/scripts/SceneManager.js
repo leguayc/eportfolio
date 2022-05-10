@@ -121,7 +121,7 @@ export class SceneManager
         };
 
         const element = document.createElement( 'img' );
-		element.src = '../banner-test.webp';
+		element.src = 'banner-test.webp';
 
         const objectCSS = new THREE.CSS3DObject( element );
         objectCSS.position.set(-6.52, 2.5, -20);
@@ -131,7 +131,7 @@ export class SceneManager
 		document.getElementById( 'container' ).appendChild( this.cssRenderer.domElement );
 
         let scene = this.scene; // To be able to access this.scene in callback
-        this.loader.load('../models/laptop.glb', function (gltf) {
+        this.loader.load('models/laptop.glb', function (gltf) {
             gltf.scene.scale.x *= 0.1;
             gltf.scene.scale.y *= 0.1;
             gltf.scene.scale.z *= 0.1;
@@ -169,7 +169,7 @@ export class SceneManager
         };
 
         let scene = this.scene; // To be able to access this.scene in callback
-        this.loader.load('../models/envelopes.glb', function (gltf) {
+        this.loader.load('models/envelopes.glb', function (gltf) {
             gltf.scene.scale.x *= 1.3;
             gltf.scene.scale.y *= 1.3;
             gltf.scene.scale.z *= 1.3;
@@ -207,6 +207,7 @@ export class SceneManager
         this.camera = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100);
         this.camera.position.set( 0, 0, 6 );
         this.scene.add(this.camera);
+        console.log(this.camera);
 
         return this.camera;
     }
