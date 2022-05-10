@@ -20,6 +20,7 @@ export default function SectionContact(props) {
                     </div>
                 </div>
             </div>
+            <div className="copyright"><p><i className="fa-regular fa-copyright"></i> 2022 Corentin Leguay</p></div>
         </section>
     );
 }

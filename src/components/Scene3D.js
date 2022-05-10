@@ -4,6 +4,8 @@ import { useGLTF, Loader } from '@react-three/drei';
 import * as THREE from "three";
 import useMousePosition from '../hooks/useMousePosition';
 import useScrollPosition from '../hooks/useScrollPosition';
+import Carousel3D from './Carousel3D';
+import { useCarouselContextBridge } from '../context/CarouselContext';
 
 function GLTFModel({url, isAnimated, ...props}) {
     const { scene } = useGLTF(url);
@@ -25,7 +27,7 @@ function GLTFModel({url, isAnimated, ...props}) {
 }
 
 function Camera() {
-    const { camera } = useThree();
+    const { camera, gl } = useThree();
     const { mouseX, mouseY } = useMousePosition();
     const { scrollPercentage } = useScrollPosition();
     const scrollCoeff = 11;
@@ -42,6 +44,7 @@ function Camera() {
 }
 
 export default function Scene3D() {
+    const ContextBridge = useCarouselContextBridge();
 
     return (
         <div className='webgl'>
@@ -50,7 +53,9 @@ export default function Scene3D() {
                 <directionalLight position={[1, 1, 1]} intensity={1.5} castShadow />
                 <Camera />
                 <Suspense fallback={null}>
-                    <GLTFModel url="./assets/models/laptop.glb" isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[0, -5.4, 0]} />
+                    <ContextBridge>
+                        <Carousel3D position={[0, -5.4, 0]} />
+                    </ContextBridge>
                     <GLTFModel url="./assets/models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={0.6} position={[0, -8.05, 0]} />
                 </Suspense>
             </Canvas>

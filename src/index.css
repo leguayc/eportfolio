@@ -87,11 +87,45 @@ img {
     text-align: center;
 }
 
+.projects-control button {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 40%;
+    color: #fff;
+    background: none;
+    border: none;
+}
+
+.projects-control button.left {
+    left: -2.5rem;
+}
+
+.projects-control button.right {
+    right: -2.5rem;
+}
+
+.projects {
+    position: relative;
+    width: 100%;
+}
+
 .project {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    min-width: 0;
     width: 100%;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.project.show {
+    opacity: 1;
 }
 
 .scrolldown {
@@ -155,6 +189,53 @@ a.icon {
     font-weight: 600;
 }
 
+.laptop-content {
+    width: 334px;
+    height: 216px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.laptop-content.endlesswander {
+    background-image: url('./assets/img/endlesswander.png');
+}
+
+.laptop-content.ederiawebsite {
+    background-image: url('./assets/img/ederiawebsite.png');
+}
+
+.laptop-content.clicknboat {
+    background-position: 0;
+    background-image: url('./assets/img/clicknboat.png');
+}
+
+.laptop-content.myblazon {
+    background-image: url('./assets/img/myblazon.png');
+}
+
+.phone-content {
+    width: 27px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.phone-content.huun {
+    background-image: url('./assets/img/huun.png');
+}
+
+.copyright {
+    position: absolute;
+    bottom: 5%;
+    font-size: 0.8rem;
+}
+
 @media (min-width: 800px) {
     .section {
         width: 60%;
@@ -174,5 +255,9 @@ a.icon {
     .section {
         width: 40%;
         padding-top: 5%;
+    }
+
+    .canvasfree {
+        height: 40%;
     }
 }
