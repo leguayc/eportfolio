@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, Loader } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import * as THREE from "three";
-import useMousePosition from '../hooks/useMousePosition';
 import useScrollPosition from '../hooks/useScrollPosition';
 import Carousel3D from './Carousel3D';
 import { useCarouselContextBridge } from '../context/CarouselContext';
+import LoadingScreen from './LoadingScreen';
 
 function GLTFModel({url, isAnimated, ...props}) {
     const { scene } = useGLTF(url);
@@ -27,16 +27,13 @@ function GLTFModel({url, isAnimated, ...props}) {
 }
 
 function Camera() {
-    const { camera, gl } = useThree();
-    const { mouseX, mouseY } = useMousePosition();
+    const { camera } = useThree();
     const { scrollPercentage } = useScrollPosition();
     const scrollCoeff = 11;
 
     camera.position.y = -scrollPercentage / scrollCoeff;
 
     useFrame((state, delta) => {
-        camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, (mouseX * Math.PI) / 450, 0.05);
-        camera.rotation.x = THREE.MathUtils.lerp(camera.rotation.x, (mouseY * Math.PI) / 450, 0.05);
         camera.position.y = THREE.MathUtils.lerp(camera.position.y, -scrollPercentage / scrollCoeff , 0.3);
     });
 
@@ -52,14 +49,13 @@ export default function Scene3D() {
                 <ambientLight intensity={0.3}/>
                 <directionalLight position={[1, 1, 1]} intensity={1.5} castShadow />
                 <Camera />
-                <Suspense fallback={null}>
+                <Suspense fallback={<LoadingScreen />}>
                     <ContextBridge>
                         <Carousel3D position={[0, -5.4, 0]} />
                     </ContextBridge>
                     <GLTFModel url="./assets/models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={0.6} position={[0, -8.05, 0]} />
                 </Suspense>
             </Canvas>
-            <Loader />
         </div>
     );
 }

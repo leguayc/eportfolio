@@ -1,7 +1,7 @@
 import { useContextBridge } from '@react-three/drei';
 import React from 'react';
 
-const CAROUSEL_SIZE = 5;
+export const CAROUSEL_SIZE = 5;
 
 const CarouselContext = React.createContext();
 

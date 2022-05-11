@@ -24,7 +24,6 @@ function Laptop({isAnimated, ...props})
         }
     });
 
-
     return (
         <group ref={group} {...props} dispose={null}>
             <group rotation-x={-0.425} position={[0, -0.04, 0.41]}>
@@ -49,7 +48,7 @@ function Laptop({isAnimated, ...props})
 
 function Phone({isAnimated, ...props }) {
     const group = useRef();
-    const { nodes, materials } = useGLTF('./assets/models/phone.glb');
+    const { nodes, materials } = useGLTF('./assets/models/phone.gltf');
     
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
@@ -68,46 +67,19 @@ function Phone({isAnimated, ...props }) {
 
     return (
         <group ref={group} {...props} dispose={null}>
-            <mesh geometry={nodes.mesh817659832.geometry} material={materials.mat16} />
-            <mesh geometry={nodes.mesh817659832_1.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.mesh817659832_2.geometry}>
+            <group position={[0, 0.5, -1.43]} rotation={[-0.2, 0, 0]}>
+                <mesh geometry={nodes.Object_2.geometry}>
+                    
+                </mesh>
+                <mesh geometry={nodes.Object_3.geometry} material={materials.Phone} />
                 {props.children}
-            </mesh>
-            <mesh geometry={nodes.group40103501.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group465359774.geometry} material={materials.mat17} />
-            <mesh geometry={nodes.group1120752718.geometry} material={materials.mat17} />
-            <mesh geometry={nodes.group1884584545.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.mesh641155211.geometry} material={materials.mat16} />
-            <mesh geometry={nodes.mesh641155211_1.geometry} material={materials.mat8} />
-            <mesh geometry={nodes.group1224932749.geometry} material={materials.mat17} />
-            <mesh geometry={nodes.group849457402.geometry} material={materials.mat17} />
-            <mesh geometry={nodes.group1152579848.geometry} material={materials.mat17} />
-            <mesh geometry={nodes.group1637273763.geometry} material={materials.mat17} />
-            <mesh geometry={nodes.group660411554.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.mesh1674681057.geometry} material={materials.mat24} />
-            <mesh geometry={nodes.mesh1674681057_1.geometry} material={materials.mat25} />
-            <mesh geometry={nodes.mesh1674681057_2.geometry} material={materials.mat5} />
-            <mesh geometry={nodes.group31295272.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group1982349354.geometry} material={materials.mat25} />
-            <mesh geometry={nodes.group2136648518.geometry} material={materials.mat24} />
-            <mesh geometry={nodes.group1909018237.geometry} material={materials.mat24} />
-            <mesh geometry={nodes.group1638188736.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group1013736083.geometry} material={materials.mat15} />
-            <mesh geometry={nodes.group1124957205.geometry} material={materials.mat15} />
-            <mesh geometry={nodes.group1113113092.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group15167646.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group291280508.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group261416222.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group1910001921.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group1251928019.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group1821786415.geometry} material={materials.mat23} />
-            <mesh geometry={nodes.group1896686979.geometry} material={materials.mat23} />
+            </group>
         </group>
     );
 }
   
 useGLTF.preload('./assets/models/laptop.glb');
-useGLTF.preload('./assets/models/phone.glb');
+useGLTF.preload('./assets/models/phone.gltf');
 
 export default function Carousel3D(props) {
     const {viewport} = useThree();
@@ -134,8 +106,8 @@ export default function Carousel3D(props) {
             <Laptop isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[viewport.width * 3, -5.4, 0]}>
                 <Html className='laptop-content clicknboat' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Phone isAnimated={true} scale={0.7} rotation={[-0.2, 3.1, 0]} position={[viewport.width * 4, -5.4, 0]}>
-                <Html className='phone-content huun' rotation-y={-Math.PI} position={[0, 0.05, -0.09]} transform occlude></Html>
+            <Phone isAnimated={true} scale={0.015} rotation={[-0.1, 0, 0]} position={[viewport.width * 4, -5.4, 0]}>
+                <Html className='phone-content huun' position={[0, 0.7, -0.09]} transform></Html>
             </Phone>
         </group>
     );

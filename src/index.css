@@ -94,6 +94,7 @@ img {
     color: #fff;
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .projects-control button.left {
@@ -217,8 +218,8 @@ a.icon {
 }
 
 .phone-content {
-    width: 27px;
-    height: 60px;
+    width: 1150px;
+    height: 2100px;
     background-size: cover;
     background-position: center;
     border-radius: 3px;
@@ -236,6 +237,28 @@ a.icon {
     font-size: 0.8rem;
 }
 
+.loading-screen {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cabin', sans-serif;
+    color: #ffeded;
+    gap: 2rem;
+}
+
+.loading-screen .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    height: 5rem;
+}
+
 @media (min-width: 800px) {
     .section {
         width: 60%;
@@ -249,6 +272,10 @@ a.icon {
     html {
         font-size: 14px;
     }
+
+    .loading-screen {
+        width: 60vw;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -259,5 +286,9 @@ a.icon {
 
     .canvasfree {
         height: 40%;
+    }
+
+    .loading-screen {
+        width: 40vw;
     }
 }

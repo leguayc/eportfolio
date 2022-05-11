@@ -1,4 +1,4 @@
-import React, { useRef, useState, Context, useContext } from 'react';
+import React from 'react';
 import Scene3D from './components/Scene3D';
 import { CarouselProvider } from './context/CarouselContext';
 import SectionAbout from './views/SectionAbout';
