@@ -14,7 +14,8 @@ function ProgressBar(props) {
         height: '100%',
         width: `${completed}%`,
         backgroundColor: bgcolor,
-        borderRadius: 'inherit'
+        borderRadius: 'inherit',
+        transition: 'width 0.3s ease-in-out'
     }
   
     return (

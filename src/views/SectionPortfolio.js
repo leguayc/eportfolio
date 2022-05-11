@@ -37,7 +37,7 @@ export default function SectionPortfolio(props) {
                 {state.carouselIndex === 0 ? 
                     <Project title="MyBlazon (2021-2022)" link={{icon: "fa-solid fa-globe", name: "Website", url: "https://myblazon.com/"}}>
                         <p>I worked as a full-stack developer for one year on MyBlazon.com, a website that generates blazon online. It's developed in .NET 6, and HTML, LESS, and JS (with Jquery) for the front.</p>
-                        <p>My tasks were numerous, and to tell a few, I had to migrate the website to .NET 6 (it was in .NET 4.5 before) and refactor it, to improve the website design, and the blazon generator with new features, and train the other interns.</p>
+                        <p>I had many tasks, to tell a few : I refactored and migrated the website to .NET 6 (it was in .NET 4.5 before), I improved the website design, and the blazon generator by developing new features for it, and finally, I also trained other interns.</p>
                     </Project> : <></> 
                 }
                 {state.carouselIndex === 1 ? 
@@ -48,8 +48,8 @@ export default function SectionPortfolio(props) {
                 }
                 {state.carouselIndex === 2 ? 
                     <Project title="Ederia Interactive (2020-2021)" link={{icon: "fa-solid fa-globe", name: "Website", url: "https://ederia-interactive.com/"}}>
-                        <p>Website for Ederia Interactive, my video game studio so we can post news about our games. Developed with Angular 10, and deployed with Docker.</p>
-                        <p>I worked alone on the project. I had to design a mock-up, develop the website and its news system (working with Markdown).</p>
+                        <p>I worked on Ederia Interactive's website. It's developed in Angular 10, the news system was done with Markdown, and the website is deployed with Docker. </p>
+                        <p>I was alone on this project. I had to design a mock-up, develop the website and its news system.</p>
                     </Project> : <></>
                 }
                 {state.carouselIndex === 3 ? 
@@ -60,7 +60,7 @@ export default function SectionPortfolio(props) {
                 }
                 {state.carouselIndex === 4 ? 
                     <Project title="Huun (2018-2019)">
-                        <p>I developed Huun in a team of 10 for a PhD student that studied attention improvements with meditation. The mobile application needed to give tests to the users to train was linked to a website to display the results of the tests. The app was developed in React Native, and the website with HTML, CSS, PHP and MySQL.</p>
+                        <p>I developed Huun in a team of 10 for a PhD student. The mobile application was developed in React Native, and the website (back-office) with HTML, CSS, PHP and MySQL.</p>
                         <p>My tasks were to program the settings related views (settings, about, credits), and the notification system (a key feature needed for the study).</p>
                     </Project> : <></>
                 }

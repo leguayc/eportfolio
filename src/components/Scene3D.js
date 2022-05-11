@@ -34,7 +34,7 @@ function Camera() {
     camera.position.y = -scrollPercentage / scrollCoeff;
 
     useFrame((state, delta) => {
-        camera.position.y = THREE.MathUtils.lerp(camera.position.y, -scrollPercentage / scrollCoeff , 0.3);
+        camera.position.y = THREE.MathUtils.lerp(camera.position.y, -scrollPercentage / scrollCoeff, 0.3);
     });
 
     return;

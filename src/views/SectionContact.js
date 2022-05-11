@@ -20,7 +20,12 @@ export default function SectionContact(props) {
                     </div>
                 </div>
             </div>
-            <div className="copyright"><p><i className="fa-regular fa-copyright"></i> 2022 Corentin Leguay</p></div>
+            <div className="copyright">
+                <p><i className="fa-regular fa-copyright"></i> 2022 Corentin Leguay</p>
+                <div className="credits">
+                    <p>Credits to <a className="colored" href="https://sketchfab.com/shedmon">shedmon</a> for the phone model, and <a className='colored' href="https://poly.pizza/u/Jarlan%20Perez">Jarlan Perez</a> for the envelopes model.</p>
+                </div>
+            </div>
         </section>
     );
 }

@@ -98,11 +98,11 @@ img {
 }
 
 .projects-control button.left {
-    left: -2.5rem;
+    left: -2rem;
 }
 
 .projects-control button.right {
-    right: -2.5rem;
+    right: -2rem;
 }
 
 .projects {
@@ -149,6 +149,10 @@ img {
     width: 100%;
     gap: 0.5rem;
     margin-top: 0.2rem;
+}
+
+a.colored {
+    color: #65C9FF;
 }
 
 a.link {
@@ -234,6 +238,12 @@ a.icon {
 .copyright {
     position: absolute;
     bottom: 5%;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.copyright .credits {
+    margin-top: 0.3rem;
     font-size: 0.8rem;
 }
 
