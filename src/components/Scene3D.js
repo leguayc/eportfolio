@@ -42,22 +42,30 @@ function Camera() {
     return;
 }
 
-export default function Scene3D() {
+export default function Scene3D({onSceneLoaded}) {
     const ContextBridge = useCarouselContextBridge();
-    const [classList, setClassList] = useState('webgl loading');
+    const [hasSceneLoaded, setHasSceneLoaded] = useState(false);
+
+    const handleSceneLoaded = () => {
+        setHasSceneLoaded(true);
+        onSceneLoaded();
+    }
+
+    console.log(hasSceneLoaded)
 
     return (
-        <div className={classList}>
+        <div className='webgl'>
             <Canvas camera={{fov: 35}}>
                 <ambientLight intensity={0.3}/>
                 <directionalLight position={[1, 1, 1]} intensity={1.5} castShadow />
                 <Camera />
-                <Suspense fallback={<LoadingScreen onCompleteLoad={() => setClassList('webgl')} />}>
+                <Suspense fallback={null}>
                     <ContextBridge>
                         <Carousel3D position={[0, -5.4, 0]} />
                     </ContextBridge>
                     <GLTFModel url="./assets/models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={{base: 0.4, 800: 0.5, 1200: 0.6}} position={[0, -8.05, 0]} />
                 </Suspense>
+                {!hasSceneLoaded && <LoadingScreen onCompleteLoad={handleSceneLoaded} />}
             </Canvas>
         </div>
     );
