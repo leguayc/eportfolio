@@ -13,7 +13,7 @@ export default function LoadingScreen({onCompleteLoad, ...props}) {
 
     return (
         <Html className="loading-screen" position={[-viewport.width/2, viewport.height/2, 0]}>
-            <div className="logo"><img src="./assets/img/avatar.png" alt="Avatar" /></div>
+            <div className="logo"><img src="./assets/img/avatar.svg" alt="Avatar" /></div>
             <div className="content">
                 <ProgressBar bgcolor="#65C9FF" progress={progress} />
                 <p>Loading... {Math.round(progress * 100) / 100}%</p>

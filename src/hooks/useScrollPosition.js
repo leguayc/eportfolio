@@ -13,7 +13,12 @@ const useScrollPosition = () => {
             st = 'scrollTop',
             sh = 'scrollHeight';
 
-        setScrollPercentage((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
+        let scrollPercentageRes = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+        if (isNaN(scrollPercentageRes)) {
+            scrollPercentageRes = 0;
+        }
+
+        setScrollPercentage(scrollPercentageRes);
         setScrollPosition(position);
     };
 

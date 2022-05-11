@@ -51,8 +51,6 @@ export default function Scene3D({onSceneLoaded}) {
         onSceneLoaded();
     }
 
-    console.log(hasSceneLoaded)
-
     return (
         <div className='webgl'>
             <Canvas camera={{fov: 35}}>

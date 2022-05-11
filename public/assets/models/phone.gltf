@@ -200,25 +200,25 @@
   ],
   "images": [
     {
-      "uri": "textures/Glass_baseColor.png"
+      "uri": "textures/Glass_baseColor.webp"
     },
     {
-      "uri": "textures/Glass_metallicRoughness.png"
+      "uri": "textures/Glass_metallicRoughness.webp"
     },
     {
-      "uri": "textures/Glass_normal.png"
+      "uri": "textures/Glass_normal.webp"
     },
     {
-      "uri": "textures/Glass_transmission.png"
+      "uri": "textures/Glass_transmission.webp"
     },
     {
-      "uri": "textures/Phone_baseColor.png"
+      "uri": "textures/Phone_baseColor.webp"
     },
     {
-      "uri": "textures/Phone_metallicRoughness.png"
+      "uri": "textures/Phone_metallicRoughness.webp"
     },
     {
-      "uri": "textures/Phone_normal.png"
+      "uri": "textures/Phone_normal.webp"
     }
   ],
   "materials": [

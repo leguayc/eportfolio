@@ -203,20 +203,20 @@ a.icon {
 }
 
 .laptop-content.endlesswander {
-    background-image: url('./assets/img/endlesswander.png');
+    background-image: url('./assets/img/endlesswander.webp');
 }
 
 .laptop-content.ederiawebsite {
-    background-image: url('./assets/img/ederiawebsite.png');
+    background-image: url('./assets/img/ederiawebsite.webp');
 }
 
 .laptop-content.clicknboat {
     background-position: 0;
-    background-image: url('./assets/img/clicknboat.png');
+    background-image: url('./assets/img/clicknboat.webp');
 }
 
 .laptop-content.myblazon {
-    background-image: url('./assets/img/myblazon.png');
+    background-image: url('./assets/img/myblazon.webp');
 }
 
 .phone-content {
@@ -230,7 +230,7 @@ a.icon {
 }
 
 .phone-content.huun {
-    background-image: url('./assets/img/huun.png');
+    background-image: url('./assets/img/huun.webp');
 }
 
 .copyright {
