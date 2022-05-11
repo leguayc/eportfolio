@@ -1,5 +1,6 @@
 import React from 'react';
 import Scene3D from './components/Scene3D';
+import SinglePageMenu from './components/SinglePageMenu';
 import { CarouselProvider } from './context/CarouselContext';
 import SectionAbout from './views/SectionAbout';
 import SectionContact from './views/SectionContact';
@@ -15,6 +16,7 @@ function App() {
                 <SectionAbout />
                 <SectionPortfolio />
                 <SectionContact />
+                <SinglePageMenu />
             </div>
         </CarouselProvider>
     );

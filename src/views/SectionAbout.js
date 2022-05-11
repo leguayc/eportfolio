@@ -1,4 +1,3 @@
-import ScrolldownNotice from "../components/ScrolldownNotice";
 import Hobby from "../components/Hobby";
 
 export default function SectionAbout(props) {
@@ -19,7 +18,6 @@ export default function SectionAbout(props) {
                     <Hobby imgName="metalsign.svg" imgAlt="Metal sign" title="Music" text="I love many genres of music, and love to discover new sounds. I like mainly metal/hard rock, and rap."/>
                 </div>
             </div>
-            <ScrolldownNotice href="#portfolio" />
         </section>
     );
 }

@@ -3,6 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
 import * as THREE from "three";
 import { useCarousel } from '../context/CarouselContext';
+import useModelScale from '../hooks/useModelScale';
 
 function Laptop({isAnimated, ...props})
 {
@@ -82,9 +83,11 @@ useGLTF.preload('./assets/models/laptop.glb');
 useGLTF.preload('./assets/models/phone.gltf');
 
 export default function Carousel3D(props) {
-    const {viewport} = useThree();
+    const { viewport } = useThree();
     const group = useRef(null);
     const { state } = useCarousel();
+    const laptopScale = useModelScale(0.07, 0.09, 0.11);
+    const phoneScale = useModelScale(0.013, 0.015, 0.017);
     const index = state.carouselIndex;
 
     useFrame((state, delta) => {
@@ -94,19 +97,19 @@ export default function Carousel3D(props) {
 
     return (
         <group ref={group}>
-            <Laptop isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[0, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[0, -5.4, 0]}>
                 <Html className='laptop-content myblazon' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Laptop isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[viewport.width, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width, -5.4, 0]}>
                 <Html className='laptop-content endlesswander' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Laptop isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[viewport.width * 2, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 2, -5.4, 0]}>
                 <Html className='laptop-content ederiawebsite' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Laptop isAnimated={true} scale={0.11} rotation={[0, 0, 0]} position={[viewport.width * 3, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 3, -5.4, 0]}>
                 <Html className='laptop-content clicknboat' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Phone isAnimated={true} scale={0.015} rotation={[-0.1, 0, 0]} position={[viewport.width * 4, -5.4, 0]}>
+            <Phone isAnimated={true} scale={phoneScale} rotation={[-0.1, 0, 0]} position={[viewport.width * 4, -5.2, 0]}>
                 <Html className='phone-content huun' position={[0, 0.7, -0.09]} transform></Html>
             </Phone>
         </group>

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from "three";
@@ -6,9 +6,11 @@ import useScrollPosition from '../hooks/useScrollPosition';
 import Carousel3D from './Carousel3D';
 import { useCarouselContextBridge } from '../context/CarouselContext';
 import LoadingScreen from './LoadingScreen';
+import useModelScale from '../hooks/useModelScale';
 
-function GLTFModel({url, isAnimated, ...props}) {
+function GLTFModel({url, isAnimated, scale, ...props}) {
     const { scene } = useGLTF(url);
+    const modelScale = useModelScale(scale.base, scale[800], scale[1200]);
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
@@ -23,7 +25,7 @@ function GLTFModel({url, isAnimated, ...props}) {
         }
     });
 
-    return <primitive object={scene} {...props} />;
+    return <primitive scale={modelScale} object={scene} {...props} />;
 }
 
 function Camera() {
@@ -42,18 +44,19 @@ function Camera() {
 
 export default function Scene3D() {
     const ContextBridge = useCarouselContextBridge();
+    const [classList, setClassList] = useState('webgl loading');
 
     return (
-        <div className='webgl'>
+        <div className={classList}>
             <Canvas camera={{fov: 35}}>
                 <ambientLight intensity={0.3}/>
                 <directionalLight position={[1, 1, 1]} intensity={1.5} castShadow />
                 <Camera />
-                <Suspense fallback={<LoadingScreen />}>
+                <Suspense fallback={<LoadingScreen onCompleteLoad={() => setClassList('webgl')} />}>
                     <ContextBridge>
                         <Carousel3D position={[0, -5.4, 0]} />
                     </ContextBridge>
-                    <GLTFModel url="./assets/models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={0.6} position={[0, -8.05, 0]} />
+                    <GLTFModel url="./assets/models/envelopes.glb" isAnimated={true} rotation={[0, 1, 1]} scale={{base: 0.4, 800: 0.5, 1200: 0.6}} position={[0, -8.05, 0]} />
                 </Suspense>
             </Canvas>
         </div>

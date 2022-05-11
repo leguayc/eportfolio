@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { Project } from "../components/Project";
-import ScrolldownNotice from "../components/ScrolldownNotice";
 import { CAROUSEL_SIZE, useCarousel } from "../context/CarouselContext";
 
 export default function SectionPortfolio(props) {
@@ -65,7 +64,6 @@ export default function SectionPortfolio(props) {
                     </Project> : <></>
                 }
             </div>
-            <ScrolldownNotice href="#contact"/>
         </section>
     );
 }
