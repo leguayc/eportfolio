@@ -48,7 +48,6 @@ img {
     color: #ffeded;
     margin: 0 auto;
     gap: 2rem;
-    scroll-snap-align: start;
     pointer-events: none;
     width: 80%;
 }
@@ -317,6 +316,7 @@ nav {
     .section {
         width: 60%;
         padding-top: 10%;
+        scroll-snap-align: start;
     }
 
     .section h2 {
