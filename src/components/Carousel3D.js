@@ -97,19 +97,25 @@ export default function Carousel3D(props) {
 
     return (
         <group ref={group}>
-            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[0, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 0, -5.4, 0]}>
+                <Html className='laptop-content eportfolio' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
+            </Laptop>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 1, -5.4, 0]}>
                 <Html className='laptop-content myblazon' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 2, -5.4, 0]}>
                 <Html className='laptop-content endlesswander' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 2, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 3, -5.4, 0]}>
                 <Html className='laptop-content ederiawebsite' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 3, -5.4, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 4, -5.4, 0]}>
                 <Html className='laptop-content clicknboat' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
             </Laptop>
-            <Phone isAnimated={true} scale={phoneScale} rotation={[-0.1, 0, 0]} position={[viewport.width * 4, -5.2, 0]}>
+            <Laptop isAnimated={true} scale={laptopScale} rotation={[0, 0, 0]} position={[viewport.width * 5, -5.4, 0]}>
+                <Html className='laptop-content flappy' rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude></Html>
+            </Laptop>
+            <Phone isAnimated={true} scale={phoneScale} rotation={[-0.1, 0, 0]} position={[viewport.width * 6, -5.2, 0]}>
                 <Html className='phone-content huun' position={[0, 0.7, -0.09]} transform></Html>
             </Phone>
         </group>

@@ -224,6 +224,14 @@ a.icon {
     background-image: url('./assets/img/myblazon.webp');
 }
 
+.laptop-content.flappy {
+    background-image: url('./assets/img/flappy.webp');
+}
+
+.laptop-content.eportfolio {
+    background-image: url('./assets/img/eportfolio.webp');
+}
+
 .phone-content {
     width: 1150px;
     height: 2100px;
@@ -313,6 +321,11 @@ nav {
         justify-content: center;
         bottom: 20%;
     }
+
+    .credits {
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -328,5 +341,9 @@ nav {
     .loading-screen {
         width: 100vw;
         padding: 0 30vw;
+    }
+
+    .credits {
+        width: 70%;
     }
 }

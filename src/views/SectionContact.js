@@ -23,7 +23,9 @@ export default function SectionContact(props) {
             <div className="copyright">
                 <p><i className="fa-regular fa-copyright"></i> 2022 Corentin Leguay</p>
                 <div className="credits">
-                    <p>Credits to <a className="colored" href="https://sketchfab.com/shedmon">shedmon</a> for the phone model, and <a className='colored' href="https://poly.pizza/u/Jarlan%20Perez">Jarlan Perez</a> for the envelopes model.</p>
+                    <p>
+                        Credits to <a className="colored" href="https://sketchfab.com/shedmon">shedmon</a> for the phone model, <a className='colored' href="https://poly.pizza/u/Jarlan%20Perez">Jarlan Perez</a> for the envelopes model, <a className="colored" href="https://github.com/FortAwesome/Font-Awesome">FortAwesome</a> for the D20 icon, and <a className='colored' href="https://www.wishforge.games/">wishforge.games</a> for the metal sign icon.
+                    </p>
                 </div>
             </div>
         </section>
