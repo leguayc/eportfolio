@@ -25,7 +25,7 @@ export default function SectionContact(props) {
                 <div className="content">
                     <p>{t('Contact question')}</p>
                     <div className="linkList">
-                        <a className="link" href="mailto:corentin.leguay@gmail.com"><i className="fa-solid fa-envelope"></i> {t('Send email')}</a>
+                        <a className="link" href="mailto:contact@leguayc.com"><i className="fa-solid fa-envelope"></i> {t('Send email')}</a>
                         <a className="link" href="https://www.linkedin.com/in/corentin-leguay/"><i className="fa-brands fa-linkedin"></i> {t('Linkedin')}</a>
                     </div>
                 </div>

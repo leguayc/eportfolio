@@ -134,11 +134,10 @@ img {
 
 .scrolldown {
     position: absolute;
-    bottom: 5%;
+    bottom: 15%;
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 1.5rem;
     width: fit-content;
 }
 
