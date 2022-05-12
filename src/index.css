@@ -297,6 +297,23 @@ nav {
     font-size: 1.2rem;
 }
 
+.langButton {
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    z-index: 1;
+    width: 2rem;
+    height: 2rem;
+}
+
+.langButton button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
 @media (min-width: 800px) {
     .section {
         width: 60%;
@@ -326,6 +343,11 @@ nav {
         width: 80%;
         margin: 0 auto;
     }
+
+    .langButton {
+        width: 3rem;
+        height: 3rem;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -345,5 +367,10 @@ nav {
 
     .credits {
         width: 70%;
+    }
+
+    .langButton {
+        width: 4rem;
+        height: 4rem;
     }
 }

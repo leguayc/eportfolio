@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LangButton } from './components/LangButton';
 import Scene3D from './components/Scene3D';
 import SinglePageMenu from './components/SinglePageMenu';
 import { CarouselProvider } from './context/CarouselContext';
@@ -13,6 +14,9 @@ function App() {
     return (
         <CarouselProvider>
             <div className="App" >
+                <div className="langButton">
+                    <LangButton />
+                </div>
                 <Scene3D onSceneLoaded={() => setIs3DSceneLoaded(true)} />
                 {is3DSceneLoaded ?
                     <div>

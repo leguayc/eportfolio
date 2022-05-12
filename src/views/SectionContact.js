@@ -1,22 +1,37 @@
-import CV from '../assets/CV_CorentinLeguay.pdf';
+import { useTranslation } from 'react-i18next';
+import CV_en from '../assets/CV_CorentinLeguay.pdf';
 
 export default function SectionContact(props) {
+    const {t, i18n} = useTranslation();
+
+    let CV;
+    switch(i18n.language.split('-')[0]) {
+        case "fr" :
+            CV = CV_en;
+            break;
+        case "en" :
+            CV = CV_en;
+            break;
+        default : 
+            console.error("Not implemented");
+    }
+
     return (
         <section id="contact" className="section">
-            <h2>Contact me</h2>
+            <h2>{t('Contact me')}</h2>
             <div className="canvasfree"></div>
             <div className='content-wrapper'>
                 <div className="content">
-                    <p>Do you have a question or do you want to work together ? Send me an email, or contact me on Linkedin.</p>
+                    <p>{t('Contact question')}</p>
                     <div className="linkList">
-                        <a className="link" href="mailto:corentin.leguay@gmail.com"><i className="fa-solid fa-envelope"></i> Send me an email</a>
-                        <a className="link" href="https://www.linkedin.com/in/corentin-leguay/"><i className="fa-brands fa-linkedin"></i> Linkedin</a>
+                        <a className="link" href="mailto:corentin.leguay@gmail.com"><i className="fa-solid fa-envelope"></i> {t('Send email')}</a>
+                        <a className="link" href="https://www.linkedin.com/in/corentin-leguay/"><i className="fa-brands fa-linkedin"></i> {t('Linkedin')}</a>
                     </div>
                 </div>
                 <div className="content">
-                    <p>If you want to look at my resume, you can also download it here.</p>
+                    <p>{t('If resume')}</p>
                     <div className="linkList">
-                        <a className="link" href={CV} target='_blank' rel='noopener noreferrer'><i className="fa-solid fa-download"></i> Download my resume</a>
+                        <a className="link" href={CV} target='_blank' rel='noopener noreferrer'><i className="fa-solid fa-download"></i> {t('Download resume')}</a>
                     </div>
                 </div>
             </div>
@@ -24,7 +39,7 @@ export default function SectionContact(props) {
                 <p><i className="fa-regular fa-copyright"></i> 2022 Corentin Leguay</p>
                 <div className="credits">
                     <p>
-                        Credits to <a className="colored" href="https://sketchfab.com/shedmon">shedmon</a> for the phone model, <a className='colored' href="https://poly.pizza/u/Jarlan%20Perez">Jarlan Perez</a> for the envelopes model, <a className="colored" href="https://github.com/FortAwesome/Font-Awesome">FortAwesome</a> for the D20 icon, and <a className='colored' href="https://www.wishforge.games/">wishforge.games</a> for the metal sign icon.
+                        {t('Credits to')} <a className="colored" href="https://sketchfab.com/shedmon">shedmon</a> {t('Credits phone')}, <a className='colored' href="https://poly.pizza/u/Jarlan%20Perez">Jarlan Perez</a> {t('Credits envelopes')}, <a className="colored" href="https://github.com/FortAwesome/Font-Awesome">FortAwesome</a> {t('Credits D20')}, {t('and')} <a className='colored' href="https://www.wishforge.games/">wishforge.games</a> {t('Credits metal')}.
                     </p>
                 </div>
             </div>
