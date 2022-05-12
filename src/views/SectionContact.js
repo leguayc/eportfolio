@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import CV_en from '../assets/CV_CorentinLeguay.pdf';
+import CV_en from '../assets/CV_CorentinLeguay_en.pdf';
+import CV_fr from '../assets/CV_CorentinLeguay_fr.pdf';
 
 export default function SectionContact(props) {
     const {t, i18n} = useTranslation();
@@ -7,7 +8,7 @@ export default function SectionContact(props) {
     let CV;
     switch(i18n.language.split('-')[0]) {
         case "fr" :
-            CV = CV_en;
+            CV = CV_fr;
             break;
         case "en" :
             CV = CV_en;
