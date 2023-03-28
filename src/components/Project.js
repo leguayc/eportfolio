@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Project({title, children, link}) {
     const [classList, setClassList] = useState('project');
     
+    useEffect(() => {
+        setTimeout(setFadeIn, 230);
+    }, [title, children, link])
+
     const setFadeIn = () => {
         setClassList('project show')
     }
-
-    setTimeout(setFadeIn, 230);
 
     return (
         <div className={classList}>

@@ -16,6 +16,72 @@ export default function SectionPortfolio(props) {
         dispatch({type: 'decrement'});
     }
 
+    const projectList = [
+        {
+            title: t("Eportfolio"),
+            link: {
+                icon: "fa-brands fa-github", 
+                name: t('Github'), 
+                url: "https://github.com/leguayc/eportfolio"
+            },
+            paragraphs: [
+                t("Eportfolio first"),
+                t("Eportfolio second")
+            ]
+        }, {
+            title: t("MyBlazon"),
+            link: {
+                icon: "fa-solid fa-globe", 
+                name: t('Website'), 
+                url: "https://myblazon.com/"
+            },
+            paragraphs: [
+                t("MyBlazon first"),
+                t("MyBlazon second"),
+            ]
+        }, {
+            title: t("Endless Wander"),
+            link: {
+                icon: "fa-brands fa-itch-io", 
+                name: t('Itchio'), 
+                url: "https://ederia-interactive.itch.io/endless-wander"
+            },
+            paragraphs: [
+                t("Endless Wander first"),
+                t("Endless Wander second"),
+            ]
+        }, {
+            title: t("Ederia Interactive"),
+            link: {
+                icon: "fa-solid fa-globe", 
+                name: t('Website'), 
+                url: "https://ederia-interactive.com/"
+            },
+            paragraphs: [
+                t("Ederia Interactive first"),
+                t("Ederia Interactive second"),
+            ]
+        }, {
+            title: t("ClicknBoat"),
+            paragraphs: [
+                t("ClicknBoat first"),
+                t("ClicknBoat second"),
+            ]
+        }, {
+            title: t("Flappy bird"),
+            paragraphs: [
+                t("Flappy bird first"),
+                t("Flappy bird second"),
+            ]
+        }, {
+            title: t("Huun"),
+            paragraphs: [
+                t("Huun first"),
+                t("Huun second"),
+            ]
+        }
+    ];
+
     return (
         <section id="portfolio" className="section">
             <h2>{t('Projects')}</h2>
@@ -35,48 +101,14 @@ export default function SectionPortfolio(props) {
                 }
             </div>
             <div ref={projects} className="projects">
-                {state.carouselIndex === 0 ? 
-                    <Project title={t('Eportfolio')} link={{icon: "fa-brands fa-github", name: t('Github'), url: "https://github.com/leguayc/eportfolio"}}>
-                        <p>{t('Eportfolio first')}</p>
-                        <p>{t('Eportfolio second')}</p>
-                    </Project> : <></> 
-                }
-                {state.carouselIndex === 1 ? 
-                    <Project title={t('MyBlazon')} link={{icon: "fa-solid fa-globe", name: t('Website'), url: "https://myblazon.com/"}}>
-                        <p>{t('MyBlazon first')}</p>
-                        <p>{t('MyBlazon second')}</p>
-                    </Project> : <></> 
-                }
-                {state.carouselIndex === 2 ? 
-                    <Project title={t('Endless Wander')} link={{icon: "fa-brands fa-itch-io", name: t('Itchio'), url: "https://ederia-interactive.itch.io/endless-wander"}}>
-                        <p>{t('Endless Wander first')}</p>
-                        <p>{t('Endless Wander second')}</p>
-                    </Project> : <></> 
-                }
-                {state.carouselIndex === 3 ? 
-                    <Project title={t('Ederia Interactive')} link={{icon: "fa-solid fa-globe", name: t('Website'), url: "https://ederia-interactive.com/"}}>
-                        <p>{t('Ederia Interactive first')}</p>
-                        <p>{t('Ederia Interactive second')}</p>
-                    </Project> : <></>
-                }
-                {state.carouselIndex === 4 ? 
-                    <Project title={t('ClicknBoat')}>
-                        <p>{t('ClicknBoat first')}</p>
-                        <p>{t('ClicknBoat second')}</p>
-                    </Project> : <></>
-                }
-                {state.carouselIndex === 5 ? 
-                    <Project title={t('Flappy bird')}>
-                        <p>{t('Flappy bird first')}</p>
-                        <p>{t('Flappy bird second')}</p>
-                    </Project> : <></>
-                }
-                {state.carouselIndex === 6 ? 
-                    <Project title={t('Huun')}>
-                        <p>{t('Huun first')}</p>
-                        <p>{t('Huun second')}</p>
-                    </Project> : <></>
-                }
+                {projectList.map((item, index) => 
+                    state.carouselIndex === index &&
+                    <Project title={item.title} link={item.link}>
+                        {item.paragraphs.map((text, textIndex) => 
+                            <p key={textIndex}>{text}</p>
+                        )}
+                    </Project>
+                )}
             </div>
         </section>
     );
